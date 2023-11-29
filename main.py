@@ -1,15 +1,12 @@
-from collections import deque
+from queue import LifoQueue
 
-#порожній стек
-stack = deque()
+stack = LifoQueue(maxsize=3)
+print(stack.qsize())#кількість елементів
+stack.put("a")
+stack.put("b")
+stack.put("c")
 
-stack.append("a")
-stack.append("b")
-stack.append("c")
-print(stack)
-print(stack.pop())
-print(stack)
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
-print(stack)
+print(stack.full())
+print(stack.qsize())#кількість елементів
+for i in range(stack.qsize()):
+    print(stack.get())
