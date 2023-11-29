@@ -1,49 +1,34 @@
-#за допомогою однозв'язного списку
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+#стек за допомогою класів
+
 class Stack:
     def __init__(self):
-        self.head = Node("head")
-        self.size = 0
-    def __str__(self):
-        cur = self.head.next
-        out = ""
-        while cur:
-            out += str(cur.value) + " -> "
-            cur = cur.next
-        return out[:-4]
+        self.items = []
 
-    def getSize(self):
-        return self.size
+    def is_empty(self):
+        return not self.items
 
-    def isEmpty(self):
-        return self.size == 0
-
-    def peek(self):
-        if self.isEmpty():
-            raise Exception("стек порожній, неможливо продивитися")
-        return self.head.next.value
-
-    def push(self, value):
-        node = Node(value)
-        node.next = self.head.next
-        self.head.next = node
-        self.size += 1
+    def push(self, item):
+        self.items.append(item)
 
     def pop(self):
-        if self.isEmpty():
-            raise Exception("стек порожній, неможливо видалити")
-        remove = self.head.next
-        self.head.next = self.head.next.next
-        self.size -= 1
-        return remove.value
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            return "Стек пустий!"
 
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+        else:
+            return "Стек пустий!"
+
+    def size(self):
+        return len(self.items)
 stack = Stack()
-for i in range(1, 11):
-    stack.push(i)
-print(stack)
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+print(stack.size())
 print(stack.pop())
 print(stack.peek())
-print(stack)
