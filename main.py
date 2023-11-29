@@ -1,10 +1,12 @@
-#стек - загальне поняття через список
-stack = []
+from collections import deque
+
+#порожній стек
+stack = deque()
+
 stack.append("a")
 stack.append("b")
 stack.append("c")
-stack.append("d")
-print(stack[-1])#peek()
+print(stack)
 print(stack.pop())
 print(stack)
 print(stack.pop())
